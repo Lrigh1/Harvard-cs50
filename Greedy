@@ -1,0 +1,47 @@
+//More visually appealing than harvard specifications!
+//program that counts counts coins given back to someone! 
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    float dollars;
+    int count = 0;
+    do{
+        printf("How much change is owed? ");
+        dollars = GetFloat();
+    }
+    while (dollars < 0);
+    
+    //convert to pennnnniessssssssssss
+    
+    int change = roundf(dollars*100);
+    
+    printf("$%.2f \n", dollars);
+    printf("%d cents\n" , change);
+    // subtracts quaters, then dimes, then nickels, then pennies.
+    while (change >= 25)
+    {
+        count += 1;
+        change -= 25;
+    }    
+   while (change >= 10)
+   {
+        count += 1;
+        change -= 10;
+   }
+   while (change >= 5)
+    {
+        count += 1;
+        change -= 5;
+    }    
+   while (change >= 1)
+   {
+        count += 1;
+        change -= 1;
+   }
+   
+   printf ("%d coins given \n", count);
+}
