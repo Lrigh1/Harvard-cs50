@@ -1,0 +1,25 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+//takes 2 names and prints the initials.
+
+int main(void)
+{
+    printf("What is your name?: "); // harvard wanted this blank for some reason
+    string s = GetString();
+    
+    //gets first letter, then loops for extra letters
+    printf("%c", toupper(s[0]));
+    
+    for (int i = 0, n =strlen(s); i < n; i++)
+    {
+        if (isblank(s[i]))
+        {
+            printf("%c", toupper(s[i+1]));
+        }
+    
+    }
+    printf("\n");
+}
