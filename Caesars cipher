@@ -1,0 +1,45 @@
+//uses the caesar code method to encrypt a phrase.  must have an argument, and then you enter a phrase.
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+//gets the argument
+int main(int argc, string argv[])
+{
+    if (argc != 2 || argv[1] < 0)
+    {
+        printf("What are you doing?! 1 argument!");
+        return 1;
+    }
+//converts argument to an int to use    
+    int k = atoi(argv[1]);
+    //printf("%d\n", k);
+    
+    printf("What is the passcode?: "); //cs50 wants this blank
+    string s = GetString();
+//loops through password and converts words/capitals/and leaves symbols alone   
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (isalpha(s[i]))
+        {
+            if (isupper(s[i]))
+            {
+                printf("%c", (s[i] - 'A'+ k)%26+'A');
+            }
+            else 
+            {
+                printf("%c", (s[i] -'a' + k)%26+'a');
+            }
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+        
+    }
+    
+    printf("\n");
+    return 0;
+}
