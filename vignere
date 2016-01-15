@@ -8,47 +8,40 @@
 
 int main(int argc, string argv[])
 {
-    //creating key string variable name
-    string k = argv[1];
     ///////////////////////////////////////////////
     //checks if argument exist, and if its a word./
     //if not, must try again.                    //
     ///////////////////////////////////////////////
-    if (argc != 2)
+    if (argc != 2 && !isalpha(argv[1]))
     {
         printf("What are you doing?! Gimme a word!\n");
         return 1;
     }
     
-    for (int i = 0, n = strlen(k); i<n; i++)
-    {
-        if (!isalpha(k[i]))
-        {
-            printf("What are you doing?! Gimme a word!\n");
-        return 1;
-        }
-    }
-    printf("What phrase?: \n");
-    string s = GetString();
+    //MEEEEEOOWWW
+    //used in loop to changed text
+    string k = argv[1];
+    int klength = strlen(k);
+    string s = GetString();  // asks for string
     
-  //////////////////////////////////////////////////////////////
-  //loops through phrase and changes it with command line key//
+    //////////////////////////////////////////////////////////////
+   //loops through phrase and changes it with command line key//
   /////////////////////////////////////////////////////////////
-    int j = 0;
-    for (int i =0, n =strlen(s); i<n ; i++)
+    for (int i =0, j = 0, n =strlen(s); i<n ; i++)
     {
+        int vigenere = k[j % klength];  //vigenere code
+        
         if (isalpha(s[i]))
         {
             if (isupper(s[i]))
             {
-                printf("%c", (s[i] - 'A'+(k[j] -'A'))%26+'A');
-                k++;
+                printf("%c", ((s[i]+vigenere+20)%26)+65);
             }
             else 
             {
-                printf("%c", (s[i] -'a' +(k[j] -'a'))%26+'a');
-                k++;
+                printf("%c", ((s[i]+vigenere+14)%26)+97);
             }
+            j++;
         }
         else
         {
