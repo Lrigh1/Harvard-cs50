@@ -1,4 +1,4 @@
-//creates a vignere cipher. 
+//creates a vigenere cipher. 
 
 #include <cs50.h>
 #include <stdio.h>
